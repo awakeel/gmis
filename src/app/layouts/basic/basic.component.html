@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <span>My Application</span>
+  <button mat-button [routerLink]="['/applications']" routerLinkActive="router-link-active" > Applications </button>
+  <button mat-button [routerLink]="['/users']" routerLinkActive="router-link-active" > Users </button>
+
+</mat-toolbar>
+<section class="page">
+  <router-outlet></router-outlet>
+</section>

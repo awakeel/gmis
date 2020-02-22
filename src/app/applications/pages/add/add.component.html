@@ -1,0 +1,37 @@
+<div class="row container">
+  <mat-card>
+    <form [formGroup]="projectForm" (submit)="onSubmit()" class="example-form">
+
+      <ng-container *ngFor="let data of formJson">
+        <h2>{{ data.group }}</h2>
+        <ng-container *ngFor="let control of data.data">
+          <mat-form-field class="example-full-width">
+            <mat-label>
+              {{ control.label }}
+            </mat-label>
+            <input matInput
+              *ngIf="control.type === 'input'"
+              type="control.type"
+              [formControlName]="control.name"
+            />
+
+            <mat-select
+              *ngIf="control.type === 'select'"
+              [formControlName]="control.name"
+            >
+              <mat-option *ngFor="let o of control.options" value="o.id">{{
+                o.title
+              }}</mat-option>
+            </mat-select>
+            <textarea matInput
+              *ngIf="control.type === 'textarea'"
+              type="control.type"
+              [formControlName]="control.name"
+            ></textarea>
+          </mat-form-field>
+        </ng-container>
+      </ng-container>
+      <button mat-button color="primary" type="submit">Submit</button>
+    </form>
+  </mat-card>
+</div>
